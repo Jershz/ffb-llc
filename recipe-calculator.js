@@ -3,11 +3,12 @@ const recipeTable = document.querySelector(".recipe-table");
 const addIngredientButton = document.querySelector(".submit-ingredient");
 const ingredientNameSelectionDropdown = document.querySelector(".ingredient-name-selection");
 const ingredientMeasurementSelectionDropdown = document.querySelector(".ingredient-measurement-selection");
-const GRAM = "gram";
-const TBSP = "tbsp";
-const CUP = "cup";
-const SINGLE = "single";
-const TSP = "tsp";
+const ingredientQuantity = document.querySelector(".ingredient-quantity");
+const GRAM = "Gram";
+const TBSP = "Tbsp";
+const CUP = "Cup";
+const SINGLE = "Single";
+const TSP = "Tsp";
 
 function roundToTwoDecimals(a) {
     return Math.round(a * 100) / 100;
@@ -18,20 +19,20 @@ function ingredient(name, unit, cost) {
     
     switch(unit) {
         case CUP:
-            this.CUP = cost;
-            this.TBSP = roundToTwoDecimals(cost/16);
-            this.TSP = roundToTwoDecimals(cost/48);
+            this[CUP] = cost;
+            this[TBSP] = roundToTwoDecimals(cost/16);
+            this[TSP] = roundToTwoDecimals(cost/48);
             break;
         case TBSP:
-            this.TBSP = cost;
-            this.CUP = roundToTwoDecimals(cost*16);
-            this.TSP = roundToTwoDecimals(cost/3);
+            this[TBSP] = cost;
+            this[CUP] = roundToTwoDecimals(cost*16);
+            this[TSP] = roundToTwoDecimals(cost/3);
             break;
         case GRAM:
-            this.GRAM = cost;
+            this[GRAM] = cost;
             break;
         case SINGLE:
-            this.SINGLE = cost;
+            this[SINGLE] = cost;
             break;
     }
     const tableRow = document.createElement("tr");
@@ -43,11 +44,11 @@ function ingredient(name, unit, cost) {
     let newGram = document.createElement("td");
     let newSingle = document.createElement("td");
     newIngredientName.textContent = this.ingredientName;
-    newCup.textContent = this.CUP;
-    newTbsp.textContent = this.TBSP;
-    newTsp.textContent = this.TSP;
-    newGram.textContent = this.GRAM;
-    newSingle.textContent = this.SINGLE;    
+    newCup.textContent = this[CUP];
+    newTbsp.textContent = this[TBSP];
+    newTsp.textContent = this[TSP];
+    newGram.textContent = this[GRAM];
+    newSingle.textContent = this[SINGLE];    
     tableRow.appendChild(newIngredientName);
     tableRow.appendChild(newCup);
     tableRow.appendChild(newTbsp);
@@ -65,28 +66,26 @@ function ingredient(name, unit, cost) {
 
 addIngredientButton.addEventListener("click", () => {
     const submittedIngredient = arrayOfIngredients.find((item) => item.ingredientName == ingredientNameSelectionDropdown.options[ingredientNameSelectionDropdown.selectedIndex].textContent);
+    const selectedMeasurement = ingredientMeasurementSelectionDropdown.options[ingredientMeasurementSelectionDropdown.selectedIndex].textContent
     const tableRow = document.createElement("tr");
-   
+    
+    
     let newIngredientName = document.createElement("td");
-    let newCup = document.createElement("td");
-    let newTbsp = document.createElement("td");
-    let newTsp = document.createElement("td");
-    let newGram = document.createElement("td");
-    let newSingle = document.createElement("td");
+    let newIngredientQuantity = document.createElement("td");
+    let newIngredientTotalCost = document.createElement("td");
     newIngredientName.textContent = submittedIngredient.ingredientName;
-    newCup.textContent = submittedIngredient.CUP;
-    newTbsp.textContent = submittedIngredient.TBSP;
-    newTsp.textContent = submittedIngredient.TSP;
-    newGram.textContent = submittedIngredient.GRAM;
-    newSingle.textContent = submittedIngredient.SINGLE;    
+    newIngredientQuantity.textContent = ingredientQuantity.value;
+    newIngredientTotalCost.textContent = ingredientQuantity.value * submittedIngredient[selectedMeasurement];
+    console.log(ingredientQuantity.value);
+    console.log(submittedIngredient[selectedMeasurement]);
+    console.log(selectedMeasurement);
+    console.log(submittedIngredient); 
     tableRow.appendChild(newIngredientName);
-    tableRow.appendChild(newCup);
-    tableRow.appendChild(newTbsp);
-    tableRow.appendChild(newTsp);
-    tableRow.appendChild(newGram);
-    tableRow.appendChild(newSingle);
+    tableRow.appendChild(newIngredientQuantity);
+    tableRow.appendChild(newIngredientTotalCost);    
 
     recipeTable.appendChild(tableRow);
+    ingredientQuantity.value = undefined;
 });
 
 //Update measurement list based on whats available to the specific ingredient
@@ -95,31 +94,32 @@ ingredientNameSelectionDropdown.addEventListener("change", () => {
         ingredientMeasurementSelectionDropdown.remove(0);
     }
     const selectedIngredient = arrayOfIngredients.find((item) => item.ingredientName == ingredientNameSelectionDropdown.options[ingredientNameSelectionDropdown.selectedIndex].textContent);
-    if(selectedIngredient.CUP != undefined) {
+    ingredientQuantity.value = undefined;
+    if(selectedIngredient[CUP] != undefined) {
         const newMeasurementOption = document.createElement("option");
         newMeasurementOption.value = CUP;
         newMeasurementOption.textContent = CUP;
         ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
     }
-    if(selectedIngredient.TBSP != undefined) {
+    if(selectedIngredient[TBSP] != undefined) {
         const newMeasurementOption = document.createElement("option");
         newMeasurementOption.value = TBSP;
         newMeasurementOption.textContent = TBSP;
         ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
     }
-    if(selectedIngredient.TSP != undefined) {
+    if(selectedIngredient[TSP] != undefined) {
         const newMeasurementOption = document.createElement("option");
         newMeasurementOption.value = TSP;
         newMeasurementOption.textContent = TSP;
         ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
     }
-    if(selectedIngredient.GRAM != undefined) {
+    if(selectedIngredient[GRAM] != undefined) {
         const newMeasurementOption = document.createElement("option");
         newMeasurementOption.value = GRAM;
         newMeasurementOption.textContent = GRAM;
         ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
     }
-    if(selectedIngredient.SINGLE != undefined) {
+    if(selectedIngredient[SINGLE] != undefined) {
         const newMeasurementOption = document.createElement("option");
         newMeasurementOption.value = SINGLE;
         newMeasurementOption.textContent = SINGLE;

@@ -4,20 +4,24 @@ const TBSP = "tbsp";
 const CUP = "cup";
 const SINGLE = "single";
 const TSP = "tsp";
-console.log(ingredientTable);
+
+function roundToTwoDecimals(a) {
+    return Math.round(a * 100) / 100;
+}
+
 function ingredient(name, unit, cost) {
     this.ingredientName = name;
     
     switch(unit) {
         case CUP:
             this.CUP = cost;
-            this.TBSP = cost/16;
-            this.TSP = cost/48;
+            this.TBSP = roundToTwoDecimals(cost/16);
+            this.TSP = roundToTwoDecimals(cost/48);
             break;
         case TBSP:
             this.TBSP = cost;
-            this.CUP = cost*16;
-            this.TSP = cost/3;
+            this.CUP = roundToTwoDecimals(cost*16);
+            this.TSP = roundToTwoDecimals(cost/3);
             break;
         case GRAM:
             this.GRAM = cost;
@@ -26,6 +30,28 @@ function ingredient(name, unit, cost) {
             this.SINGLE = cost;
             break;
     }
+    const tableRow = document.createElement("tr");
+   
+    let newIngredientName = document.createElement("td");
+    let newCup = document.createElement("td");
+    let newTbsp = document.createElement("td");
+    let newTsp = document.createElement("td");
+    let newGram = document.createElement("td");
+    let newSingle = document.createElement("td");
+    newIngredientName.textContent = this.ingredientName;
+    newCup.textContent = this.CUP;
+    newTbsp.textContent = this.TBSP;
+    newTsp.textContent = this.TSP;
+    newGram.textContent = this.GRAM;
+    newSingle.textContent = this.SINGLE;    
+    tableRow.appendChild(newIngredientName);
+    tableRow.appendChild(newCup);
+    tableRow.appendChild(newTbsp);
+    tableRow.appendChild(newTsp);
+    tableRow.appendChild(newGram);
+    tableRow.appendChild(newSingle);
+   
+    ingredientTable.appendChild(tableRow);
 }
 
 const flour = new ingredient("Hard White Wheat", GRAM, 0.006);

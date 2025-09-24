@@ -64,12 +64,20 @@ function ingredient(name, unit, cost) {
     arrayOfIngredients.push(this);
 }
 
+//On clicking Add Ingredient create a new table row and calculate the cost x quantity
+//Also checks for and validates for one instance of each ingredient
 addIngredientButton.addEventListener("click", () => {
     const submittedIngredient = arrayOfIngredients.find((item) => item.ingredientName == ingredientNameSelectionDropdown.options[ingredientNameSelectionDropdown.selectedIndex].textContent);
     const selectedMeasurement = ingredientMeasurementSelectionDropdown.options[ingredientMeasurementSelectionDropdown.selectedIndex].textContent
     const tableRow = document.createElement("tr");
-    
-    
+
+    //Create class name for the tr and delete any tr's with class name to prevent duplication    
+    tableRow.className = submittedIngredient.ingredientName.split(" ").join("-");
+    for(const child of recipeTable.children) {
+        if(tableRow.className == child.className ) recipeTable.removeChild(child);
+    }  
+    //recipeTable.removeChild(document.querySelector(tableRow.classList));
+
     let newIngredientName = document.createElement("td");
     let newIngredientQuantity = document.createElement("td");
     let newIngredientTotalCost = document.createElement("td");
@@ -85,7 +93,7 @@ addIngredientButton.addEventListener("click", () => {
     tableRow.appendChild(newIngredientTotalCost);    
 
     recipeTable.appendChild(tableRow);
-    ingredientQuantity.value = undefined;
+    ingredientQuantity.value = null;
 });
 
 //Update measurement list based on whats available to the specific ingredient
@@ -94,7 +102,7 @@ ingredientNameSelectionDropdown.addEventListener("change", () => {
         ingredientMeasurementSelectionDropdown.remove(0);
     }
     const selectedIngredient = arrayOfIngredients.find((item) => item.ingredientName == ingredientNameSelectionDropdown.options[ingredientNameSelectionDropdown.selectedIndex].textContent);
-    ingredientQuantity.value = undefined;
+    ingredientQuantity.value = null;
     if(selectedIngredient[CUP] != undefined) {
         const newMeasurementOption = document.createElement("option");
         newMeasurementOption.value = CUP;
@@ -127,10 +135,11 @@ ingredientNameSelectionDropdown.addEventListener("change", () => {
     }    
 });
 
+//Create the ingredients manually, eventually will convert to interface
+//that saves, updates, and edits a database
 const arrayOfIngredients = [];
 const flour = new ingredient("Hard White Wheat", GRAM, 0.006);
 const butter = new ingredient("Kerry Gold Butter", TBSP, 0.26);
-const eggs = new ingredient("Eggs", SINGLE, 0.21);
 const oliveOil = new ingredient("Olive Oil", CUP, 2.13);
 const chocolateChip = new ingredient("Nestle Toll House Semi-Sweet Chocolate Chips", CUP, 1.76);
 const vanillaExtract = new ingredient("McCormick Pure Vanilla Extract", CUP, 10.98);
@@ -141,7 +150,4 @@ const brownSugar = new ingredient("Member's Mark Light Brown Sugar", CUP, 0.48);
 const powderedSugar = new ingredient("Member's Mark Powdered Sugar", CUP, 0.48);
 const yeast = new ingredient("Fleischmann's Classic Bread Machine Instant Yeast", CUP, 10.96);
 const milk = new ingredient("Member's Mark Whole Milk", CUP, 0.56);
-
-console.log(arrayOfIngredients);
-const test = arrayOfIngredients.find((item) => item.ingredientName == "Hard White Wheat")
-console.log(test.GRAM);
+const eggs = new ingredient("Eggs", SINGLE, 0.21);

@@ -1,4 +1,6 @@
 const ingredientTable = document.querySelector(".ingredient-table");
+const recipeTable = document.querySelector(".recipe-table");
+const addIngredientButton = document.querySelector(".submit-ingredient");
 const ingredientNameSelectionDropdown = document.querySelector(".ingredient-name-selection");
 const GRAM = "gram";
 const TBSP = "tbsp";
@@ -59,6 +61,32 @@ function ingredient(name, unit, cost) {
     ingredientTable.appendChild(tableRow);
     arrayOfIngredients.push(this);
 }
+
+addIngredientButton.addEventListener("click", () => {
+    const submittedIngredient = arrayOfIngredients.find((item) => item.ingredientName == ingredientNameSelectionDropdown.options[ingredientNameSelectionDropdown.selectedIndex].textContent);
+    const tableRow = document.createElement("tr");
+   
+    let newIngredientName = document.createElement("td");
+    let newCup = document.createElement("td");
+    let newTbsp = document.createElement("td");
+    let newTsp = document.createElement("td");
+    let newGram = document.createElement("td");
+    let newSingle = document.createElement("td");
+    newIngredientName.textContent = submittedIngredient.ingredientName;
+    newCup.textContent = submittedIngredient.CUP;
+    newTbsp.textContent = submittedIngredient.TBSP;
+    newTsp.textContent = submittedIngredient.TSP;
+    newGram.textContent = submittedIngredient.GRAM;
+    newSingle.textContent = submittedIngredient.SINGLE;    
+    tableRow.appendChild(newIngredientName);
+    tableRow.appendChild(newCup);
+    tableRow.appendChild(newTbsp);
+    tableRow.appendChild(newTsp);
+    tableRow.appendChild(newGram);
+    tableRow.appendChild(newSingle);
+
+    recipeTable.appendChild(tableRow);
+});
 
 const arrayOfIngredients = [];
 const flour = new ingredient("Hard White Wheat", GRAM, 0.006);

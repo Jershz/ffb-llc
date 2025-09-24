@@ -2,6 +2,7 @@ const ingredientTable = document.querySelector(".ingredient-table");
 const recipeTable = document.querySelector(".recipe-table");
 const addIngredientButton = document.querySelector(".submit-ingredient");
 const ingredientNameSelectionDropdown = document.querySelector(".ingredient-name-selection");
+const ingredientMeasurementSelectionDropdown = document.querySelector(".ingredient-measurement-selection");
 const GRAM = "gram";
 const TBSP = "tbsp";
 const CUP = "cup";
@@ -86,6 +87,44 @@ addIngredientButton.addEventListener("click", () => {
     tableRow.appendChild(newSingle);
 
     recipeTable.appendChild(tableRow);
+});
+
+//Update measurement list based on whats available to the specific ingredient
+ingredientNameSelectionDropdown.addEventListener("change", () => {
+    while(ingredientMeasurementSelectionDropdown.options.length > 0) {
+        ingredientMeasurementSelectionDropdown.remove(0);
+    }
+    const selectedIngredient = arrayOfIngredients.find((item) => item.ingredientName == ingredientNameSelectionDropdown.options[ingredientNameSelectionDropdown.selectedIndex].textContent);
+    if(selectedIngredient.CUP != undefined) {
+        const newMeasurementOption = document.createElement("option");
+        newMeasurementOption.value = CUP;
+        newMeasurementOption.textContent = CUP;
+        ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
+    }
+    if(selectedIngredient.TBSP != undefined) {
+        const newMeasurementOption = document.createElement("option");
+        newMeasurementOption.value = TBSP;
+        newMeasurementOption.textContent = TBSP;
+        ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
+    }
+    if(selectedIngredient.TSP != undefined) {
+        const newMeasurementOption = document.createElement("option");
+        newMeasurementOption.value = TSP;
+        newMeasurementOption.textContent = TSP;
+        ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
+    }
+    if(selectedIngredient.GRAM != undefined) {
+        const newMeasurementOption = document.createElement("option");
+        newMeasurementOption.value = GRAM;
+        newMeasurementOption.textContent = GRAM;
+        ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
+    }
+    if(selectedIngredient.SINGLE != undefined) {
+        const newMeasurementOption = document.createElement("option");
+        newMeasurementOption.value = SINGLE;
+        newMeasurementOption.textContent = SINGLE;
+        ingredientMeasurementSelectionDropdown.appendChild(newMeasurementOption);
+    }    
 });
 
 const arrayOfIngredients = [];

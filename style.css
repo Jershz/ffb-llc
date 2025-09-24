@@ -35,3 +35,8 @@ tr:nth-child(odd) td {
 caption {
   padding: 10px;
 }
+
+label {
+    display: block;
+}
+

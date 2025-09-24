@@ -4,6 +4,7 @@ const addIngredientButton = document.querySelector(".submit-ingredient");
 const ingredientNameSelectionDropdown = document.querySelector(".ingredient-name-selection");
 const ingredientMeasurementSelectionDropdown = document.querySelector(".ingredient-measurement-selection");
 const ingredientQuantity = document.querySelector(".ingredient-quantity");
+const recipeTotal = document.querySelector(".total");
 const GRAM = "Gram";
 const TBSP = "Tbsp";
 const CUP = "Cup";
@@ -83,7 +84,7 @@ addIngredientButton.addEventListener("click", () => {
     let newIngredientTotalCost = document.createElement("td");
     newIngredientName.textContent = submittedIngredient.ingredientName;
     newIngredientQuantity.textContent = ingredientQuantity.value;
-    newIngredientTotalCost.textContent = ingredientQuantity.value * submittedIngredient[selectedMeasurement];
+    newIngredientTotalCost.textContent = (ingredientQuantity.value * submittedIngredient[selectedMeasurement]).toFixed(2);
     console.log(ingredientQuantity.value);
     console.log(submittedIngredient[selectedMeasurement]);
     console.log(selectedMeasurement);
@@ -94,8 +95,17 @@ addIngredientButton.addEventListener("click", () => {
 
     recipeTable.appendChild(tableRow);
     ingredientQuantity.value = null;
+    calculateTotalCostOfRecipe();
 });
 
+function calculateTotalCostOfRecipe() {
+    recipeTotal.textContent = "";
+    let sum = 0;
+    for(let i = 1; i < recipeTable.rows.length-1; i++) {
+        sum += parseFloat(recipeTable.rows[i].cells[2].innerHTML);
+    }
+    recipeTotal.textContent = "$" + sum.toFixed(2);
+}
 //Update measurement list based on whats available to the specific ingredient
 ingredientNameSelectionDropdown.addEventListener("change", () => {
     while(ingredientMeasurementSelectionDropdown.options.length > 0) {

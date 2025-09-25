@@ -8,17 +8,6 @@
     <title>Fresh Flours Bakery, LLC - Recipe Calculator</title>
 </head>
 <body>
-    <table class="ingredient-table">
-        <tr>
-            <th>Ingredient</th>
-            <th>Per Cup</th>
-            <th>Per TBSP</th>
-            <th>Per TSP</th>
-            <th>Per Gram</th>
-            <th>Single</th>
-        </tr>
-    </table>
-
     <form class="recipe-form">
         <label for="ingredient-name">Ingredient: </label>
         <select name="ingredient-name" class="ingredient-name-selection">
@@ -36,8 +25,8 @@
         <thead>
             <tr>
                 <th>Ingredient</th>
-                <th>Total Quantity</th>
-                <th>Total Cost</th>
+                <th>Quantity</th>
+                <th>Cost</th>
             </tr>
         </thead>
         <tfoot>
@@ -46,5 +35,16 @@
             <td class="total"></td>
         </tfoot>
     </table>
+
+    <table class="ingredient-table">
+        <tr>
+            <th>Ingredient</th>
+            <th>Per Cup</th>
+            <th>Per TBSP</th>
+            <th>Per TSP</th>
+            <th>Per Gram</th>
+            <th>Single</th>
+        </tr>
+    </table>    
 </body>
 </html>

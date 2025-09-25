@@ -27,8 +27,6 @@ td, th {
   border: 1px solid rgb(190,190,190);
   padding: 10px 20px;
   text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 th {
@@ -37,6 +35,7 @@ th {
 
 td {
   text-align: left;
+  font-size: .65rem;
 }
 
 tr:nth-child(even) td {
@@ -79,4 +78,8 @@ tfoot {
 
 .ingredient-table {
   margin-top: 20rem;
+}
+
+.total, .total-label {
+  font-size: 1rem;
 }

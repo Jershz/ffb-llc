@@ -15,7 +15,7 @@
         </select>
 
         <label for="amount">Amount: </label>
-        <input type="number" name="quantity" class="ingredient-quantity" min="0">
+        <input type="text" inputmode="decimal" name="quantity" class="ingredient-quantity" min="0" />
         <label for="measurement">Measurement: </label>
         <select name="ingredient-measurement" class="ingredient-measurement-selection"></select>
         <button type="button" class="submit-ingredient">Add Ingredient</button>
@@ -30,7 +30,7 @@
             </tr>
         </thead>
         <tfoot>
-            <td>Total</td>
+            <td class="total-label">Total</td>
             <td></td>
             <td class="total"></td>
         </tfoot>

@@ -15,7 +15,7 @@ function roundToTwoDecimals(a) {
     return Math.round(a * 100) / 100;
 }
 
-function ingredient(name, unit, cost) {
+function ingredient(name, unit, cost, groupLabel) {
     this.ingredientName = name;
     
     switch(unit) {
@@ -56,7 +56,7 @@ function ingredient(name, unit, cost) {
     tableRow.appendChild(newTsp);
     tableRow.appendChild(newGram);
     tableRow.appendChild(newSingle);
-   
+    
     const newOption = document.createElement("option");
     newOption.value = this.ingredientName;
     newOption.textContent = this.ingredientName;
@@ -146,21 +146,22 @@ ingredientNameSelectionDropdown.addEventListener("change", () => {
 //Create the ingredients manually, eventually will convert to interface
 //that saves, updates, and edits a database
 const arrayOfIngredients = [];
-const flour = new ingredient("Hard White Wheat", GRAM, 0.006);
-const butter = new ingredient("Kerry Gold Butter", TBSP, 0.26);
-const oliveOil = new ingredient("Olive Oil", CUP, 2.13);
-const chocolateChip = new ingredient("Nestle Toll House Semi-Sweet Chocolate Chips", CUP, 1.76);
-const vanillaExtract = new ingredient("McCormick Pure Vanilla Extract", CUP, 10.98);
-const bakingPowder = new ingredient("Clabber Girl Baking Powder", CUP, 1.44);
-const bakingSoda = new ingredient("Arm & Hammer Pure Baking Soda", CUP, 0.33);
-const sugar = new ingredient("Domino Sugar", CUP, 0.4);
-const brownSugar = new ingredient("Member's Mark Light Brown Sugar", CUP, 0.48);
-const powderedSugar = new ingredient("Member's Mark Powdered Sugar", CUP, 0.48);
-const yeast = new ingredient("Fleischmann's Classic Bread Machine Instant Yeast", CUP, 10.96);
-const milk = new ingredient("Member's Mark Whole Milk", CUP, 0.56);
-const salt = new ingredient("Member's Mark Sea Salt", TBSP, 0.055);
-const shortening = new ingredient("Crisco Shortening", TBSP, 0.065);
-const oats = new ingredient("Quaker Instant Oats", CUP, 0.4);
+const flour = new ingredient("Wheat, Hard White", GRAM, 0.006);
+const flour2 = new ingredient("Wheat, Soft White", GRAM, 0.006);
+const butter = new ingredient("Butter, Kerry Gold", TBSP, 0.26);
+const oliveOil = new ingredient("Oil, Olive", CUP, 2.13);
+const chocolateChip = new ingredient("Chocolate Chips, Nestle Toll House Semi-Sweet", CUP, 1.76);
+const vanillaExtract = new ingredient("Vanilla Extract, McCormick Pure", CUP, 10.98);
+const bakingPowder = new ingredient("Baking Powder, Clabber Girl", CUP, 1.44);
+const bakingSoda = new ingredient("Baking Soda, Arm & Hammer Pure", CUP, 0.33);
+const sugar = new ingredient("Sugar, Domino", CUP, 0.4);
+const brownSugar = new ingredient("Brown Sugar, Member's Mark Light", CUP, 0.48);
+const powderedSugar = new ingredient("Powdered Sugar, Member's Mark", CUP, 0.48);
+const yeast = new ingredient("Yeast, Fleischmann's Classic Bread Machine Instant", CUP, 10.96);
+const milk = new ingredient("Milk, Member's Mark Whole", CUP, 0.56);
+const salt = new ingredient("Sea Salt, Member's Mark", TBSP, 0.055);
+const shortening = new ingredient("Shortening, Crisco", TBSP, 0.065);
+const oats = new ingredient("Oats, Quaker Instant", CUP, 0.4);
 const cinnamon = new ingredient("Cinnamon", TBSP, 0.44);
 const nutmeg = new ingredient("Nutmeg", TBSP, 0.82);
 const eggs = new ingredient("Eggs", SINGLE, 0.21);

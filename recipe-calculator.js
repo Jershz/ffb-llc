@@ -162,4 +162,5 @@ const yeast = new ingredient("Fleischmann's Classic Bread Machine Instant Yeast"
 const milk = new ingredient("Member's Mark Whole Milk", CUP, 0.56);
 const salt = new ingredient("Member's Mark Sea Salt", TBSP, 0.055);
 const shortening = new ingredient("Crisco Shortening", TBSP, 0.065);
+const oats = new ingredient("Quaker Instant Oats", CUP, 0.4);
 const eggs = new ingredient("Eggs", SINGLE, 0.21);

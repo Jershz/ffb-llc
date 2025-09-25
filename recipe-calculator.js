@@ -83,12 +83,9 @@ addIngredientButton.addEventListener("click", () => {
     let newIngredientQuantity = document.createElement("td");
     let newIngredientTotalCost = document.createElement("td");
     newIngredientName.textContent = submittedIngredient.ingredientName;
-    newIngredientQuantity.textContent = ingredientQuantity.value;
+    newIngredientQuantity.textContent = ingredientQuantity.value + " " + selectedMeasurement;
     newIngredientTotalCost.textContent = (ingredientQuantity.value * submittedIngredient[selectedMeasurement]).toFixed(2);
-    console.log(ingredientQuantity.value);
-    console.log(submittedIngredient[selectedMeasurement]);
-    console.log(selectedMeasurement);
-    console.log(submittedIngredient); 
+
     tableRow.appendChild(newIngredientName);
     tableRow.appendChild(newIngredientQuantity);
     tableRow.appendChild(newIngredientTotalCost);    
@@ -96,6 +93,7 @@ addIngredientButton.addEventListener("click", () => {
     recipeTable.appendChild(tableRow);
     ingredientQuantity.value = null;
     calculateTotalCostOfRecipe();
+    ingredientNameSelectionDropdown.selectedIndex = 0;
 });
 
 function calculateTotalCostOfRecipe() {

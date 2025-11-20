@@ -146,8 +146,12 @@ ingredientNameSelectionDropdown.addEventListener("change", () => {
 //Create the ingredients manually, eventually will convert to interface
 //that saves, updates, and edits a database
 const arrayOfIngredients = [];
-const flour = new ingredient("Wheat, Hard White", GRAM, 0.006);
-const flour2 = new ingredient("Wheat, Soft White", GRAM, 0.006);
+const cheapFlour = new ingredient("Wheat, Azure Hard White", GRAM, 0.003);
+const cheapFlour2 = new ingredient("Wheat, Azure Soft White", GRAM, 0.002);
+const cheapFlour3 = new ingredient("Wheat, Azure Spelt", GRAM, 0.003);
+const cheapFlour4 = new ingredient("Wheat, Azure Khorasan", GRAM, 0.004);
+const flour = new ingredient("Wheat, Amazon Hard White", GRAM, 0.006);
+const flour2 = new ingredient("Wheat, Amazon Soft White", GRAM, 0.006);
 const butter = new ingredient("Butter, Kerry Gold", TBSP, 0.26);
 const oliveOil = new ingredient("Oil, Olive", CUP, 2.13);
 const chocolateChip = new ingredient("Chocolate Chips, Nestle Toll House Semi-Sweet", CUP, 1.76);

@@ -29,6 +29,11 @@ function ingredient(name, unit, cost, groupLabel) {
             this[CUP] = roundToTwoDecimals(cost*16);
             this[TSP] = roundToTwoDecimals(cost/3);
             break;
+        case TSP:
+            this[TSP] = cost;
+            this[CUP] = roundToTwoDecimals(cost*48);
+            this[TBSP] = roundToTwoDecimals(cost*3);
+            break;
         case GRAM:
             this[GRAM] = cost;
             break;

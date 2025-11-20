@@ -158,6 +158,7 @@ const chocolateChip = new ingredient("Chocolate Chips, Nestle Toll House Semi-Sw
 const vanillaExtract = new ingredient("Vanilla Extract, McCormick Pure", CUP, 10.98);
 const bakingPowder = new ingredient("Baking Powder, Clabber Girl", CUP, 1.44);
 const bakingSoda = new ingredient("Baking Soda, Arm & Hammer Pure", CUP, 0.33);
+const honey = new ingredient("Honey, Member's Mark", TBSP, 0.085);
 const sugar = new ingredient("Sugar, Domino", CUP, 0.4);
 const brownSugar = new ingredient("Brown Sugar, Member's Mark Light", CUP, 0.48);
 const powderedSugar = new ingredient("Powdered Sugar, Member's Mark", CUP, 0.48);

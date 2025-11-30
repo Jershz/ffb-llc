@@ -151,13 +151,21 @@ ingredientNameSelectionDropdown.addEventListener("change", () => {
 //Create the ingredients manually, eventually will convert to interface
 //that saves, updates, and edits a database
 const arrayOfIngredients = [];
+const redflour = new ingredient("Wheat, Azure Hard Red", CUP, 0.36);
 const cheapFlour = new ingredient("Wheat, Azure Hard White", GRAM, 0.003);
 const cheapFlour2 = new ingredient("Wheat, Azure Soft White", GRAM, 0.002);
 const cheapFlour3 = new ingredient("Wheat, Azure Spelt", GRAM, 0.003);
 const cheapFlour4 = new ingredient("Wheat, Azure Khorasan", GRAM, 0.004);
 const flour = new ingredient("Wheat, Amazon Hard White", GRAM, 0.006);
 const flour2 = new ingredient("Wheat, Amazon Soft White", GRAM, 0.006);
+const barley = new ingredient("Barley, Azure", CUP, 0.36);
+const millet = new ingredient("Millet, Azure", CUP, 0.54);
+const lentils = new ingredient("Lentils, Azure Red", CUP, 0.8);
+const kidneybeans = new ingredient("Kidney Beans Dried, Azure", CUP, 0.9);
+const pintobeans = new ingredient("Pinto Beans Dried, Azure", CUP, 0.72);
+const beans = new ingredient("Great Northern Beans, Azure", CUP, 1.08);
 const butter = new ingredient("Butter, Kerry Gold", TBSP, 0.26);
+const lard = new ingredient("Lard", CUP, 1.04);
 const oliveOil = new ingredient("Oil, Olive", CUP, 2.13);
 const chocolateChip = new ingredient("Chocolate Chips, Nestle Toll House Semi-Sweet", CUP, 1.76);
 const vanillaExtract = new ingredient("Vanilla Extract, McCormick Pure", CUP, 10.98);
